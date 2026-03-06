@@ -54,17 +54,18 @@ internal class Program
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Console.WriteLine(e.Message);
             return;
         }
 
         try
         {
             using var connection = new SqlConnection(connectionString);
+            connection.Open();
         }
         catch (Exception e)
         {
-            Console.WriteLine("Cannot connect to the database");
+            Console.WriteLine("Cannot connect to the database: " + e.Message);
             return;
         }
 
